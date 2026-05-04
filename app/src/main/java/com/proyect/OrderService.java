@@ -22,18 +22,13 @@ public class OrderService {
             System.out.println("Debug: orderType=" + orderType + " price=" + price + " quantity=" + quantity);
         }
 
-        // Validación correcta
         validateQuantity(quantity);
 
         double total = price * quantity;
 
-        // Lógica extraída
         printOrderType(orderType);
 
-        if (total > DISCOUNT_THRESHOLD) {
-            tempDiscount = "10%";
-            total = total * DISCOUNT_RATE;
-        }
+        total = applyDiscount(total);
 
         System.out.println("Total: " + total);
 
@@ -68,5 +63,13 @@ public class OrderService {
         } else if (orderType.equals(ORDER_INTERNATIONAL)) {
             System.out.println("International order");
         }
+    }
+
+    private double applyDiscount(double total) {
+        if (total > DISCOUNT_THRESHOLD) {
+            tempDiscount = "10%";
+            return total * DISCOUNT_RATE;
+        }
+        return total;
     }
 }
