@@ -54,7 +54,15 @@ public class OrderService {
             System.out.println(o);
         }
     }
+    private void validateQuantity(int quantity) {
+        if (quantity == 0) {
+            System.out.println("Error: quantity is zero");
+        }
 
+        if (quantity < 0) {
+            System.out.println("Error: negative quantity");
+        }
+    }
 
     }
 }
