@@ -53,9 +53,6 @@ public class OrderService {
         }
     }
 
-    public void unusedMethod() {
-        int x = 10;
-        int y = 20;
-        int z = x + y;
+
     }
 }
