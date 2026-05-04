@@ -18,9 +18,7 @@ public class OrderService {
     public void processOrder(String orderType, double price, int quantity) {
         System.out.println("Processing order...");
 
-        if (debugMode) {
-            System.out.println("Debug: orderType=" + orderType + " price=" + price + " quantity=" + quantity);
-        }
+        printDebugInfo(orderType, price, quantity);
 
         validateQuantity(quantity);
 
@@ -74,6 +72,12 @@ public class OrderService {
     private void addOrderIfValid(String orderType, double total, int quantity) {
         if (quantity > 0) {
             orders.add(orderType + "-" + total);
+        }
+    }
+
+    private void printDebugInfo(String orderType, double price, int quantity) {
+        if (debugMode) {
+            System.out.println("Debug: orderType=" + orderType + " price=" + price + " quantity=" + quantity);
         }
     }
 }
