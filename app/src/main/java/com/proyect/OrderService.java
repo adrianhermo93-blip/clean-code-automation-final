@@ -4,23 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderService {
+
     private static final String ORDER_INTERNATIONAL = "INTERNATIONAL";
     private static final String ORDER_NORMAL = "NORMAL";
     private static final String ORDER_PRIORITY = "PRIORITY";
     private static final double DISCOUNT_THRESHOLD = 100;
     private static final double DISCOUNT_RATE = 0.9;
+
     private List<String> orders = new ArrayList<>();
     private String tempDiscount;
     private boolean debugMode = false;
 
     public void processOrder(String orderType, double price, int quantity) {
         System.out.println("Processing order...");
+
         if (debugMode) {
             System.out.println("Debug: orderType=" + orderType + " price=" + price + " quantity=" + quantity);
         }
 
+        // Validación correcta
+        validateQuantity(quantity);
+
         double total = price * quantity;
 
+        // Lógica extraída
         printOrderType(orderType);
 
         if (total > DISCOUNT_THRESHOLD) {
@@ -34,14 +41,6 @@ public class OrderService {
             orders.add(orderType + "-" + total);
         }
 
-        if (quantity == 0) {
-            System.out.println("Error: quantity is zero");
-        }
-
-        if (quantity < 0) {
-            System.out.println("Error: negative quantity");
-        }
-
         System.out.println("Order processed.");
     }
 
@@ -50,6 +49,7 @@ public class OrderService {
             System.out.println(o);
         }
     }
+
     private void validateQuantity(int quantity) {
         if (quantity == 0) {
             System.out.println("Error: quantity is zero");
@@ -59,6 +59,7 @@ public class OrderService {
             System.out.println("Error: negative quantity");
         }
     }
+
     private void printOrderType(String orderType) {
         if (orderType.equals(ORDER_NORMAL)) {
             System.out.println("Normal order");
@@ -67,6 +68,5 @@ public class OrderService {
         } else if (orderType.equals(ORDER_INTERNATIONAL)) {
             System.out.println("International order");
         }
-    }
     }
 }
