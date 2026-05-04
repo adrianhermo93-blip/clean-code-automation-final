@@ -120,3 +120,8 @@ This project demonstrates the importance of identifying *code smells* early in d
 Selenium tests ensure that structural improvements do not break existing functionality.
 
 The final result is cleaner, more scalable, and professional-quality code.
+
+## Canva
+
+https://canva.link/derxz7amcttvd0l
+
