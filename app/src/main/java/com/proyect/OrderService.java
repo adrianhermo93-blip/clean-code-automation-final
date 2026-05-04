@@ -21,13 +21,7 @@ public class OrderService {
 
         double total = price * quantity;
 
-        if (orderType.equals(ORDER_NORMAL)) {
-            System.out.println("Normal order");
-        } else if (orderType.equals(ORDER_PRIORITY)) {
-            System.out.println("Priority order");
-        } else if (orderType.equals(ORDER_INTERNATIONAL)) {
-            System.out.println("International order");
-        }
+        printOrderType(orderType);
 
         if (total > DISCOUNT_THRESHOLD) {
             tempDiscount = "10%";
@@ -65,6 +59,14 @@ public class OrderService {
             System.out.println("Error: negative quantity");
         }
     }
-
+    private void printOrderType(String orderType) {
+        if (orderType.equals(ORDER_NORMAL)) {
+            System.out.println("Normal order");
+        } else if (orderType.equals(ORDER_PRIORITY)) {
+            System.out.println("Priority order");
+        } else if (orderType.equals(ORDER_INTERNATIONAL)) {
+            System.out.println("International order");
+        }
+    }
     }
 }
